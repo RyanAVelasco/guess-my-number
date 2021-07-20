@@ -28,13 +28,11 @@ def check(player, cpu):
     if freedom == 'y' or freedom == 'yes' : freedom = True
     else : quit()
 
-    
-
 def range():
     global cpu_number
     
     while True:
-        num_range = input('\nEnter your choice here: ').lower().strip()
+        num_range = input('\nEnter your choice here: ').replace(',', '').lower().strip()
 
         if num_range == '1' or num_range == 'ten' or num_range == '10':
             cpu_number = random.randint(1, 10)
@@ -70,6 +68,7 @@ while True:
     #Your turn to play
     print('\nIt\'s your turn to choose a number now')    
     while freedom == False:
-        p_guess = input('\nChoose a number:', )
+        p_guess = input('\nChoose a number: (type \'restart\' if you want to make another choice)\n>> ').replace(',', '')
+        if p_guess == 'restart': break
         check(p_guess, cpu_number)
         
